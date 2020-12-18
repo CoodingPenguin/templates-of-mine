@@ -1,5 +1,6 @@
 # title: 선택 정렬
 # src: 이것이 취업을 위한 코딩테스트다 p.159
+# time: O(N) ~ O(N^2)
 
 def selection_sort(arr):
     '''

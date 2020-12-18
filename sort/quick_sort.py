@@ -1,5 +1,6 @@
 # title: 퀵 정렬
 # src: 이것이 취업을 위한 코딩테스트다 p.169
+# time: O(NlogN)
 
 def quick_sort(arr):
     '''

@@ -1,5 +1,6 @@
 # title: 너비 우선 탐색(BFS, Breadth First Search)
 # src: 이것이 취업을 위한 코딩테스트다 p.147
+# time: O(N)
 
 from collections import deque
 

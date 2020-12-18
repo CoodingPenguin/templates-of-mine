@@ -23,3 +23,7 @@
 - [삽입 정렬](./sort/insertion_sort.py)
 - [퀵 정렬](./sort/quick_sort.py)
 - [계수 정렬](.sort/count_sort.py)
+
+# Tree
+
+- [이진 탐색](./tree/binary_tree.py)

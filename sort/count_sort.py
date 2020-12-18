@@ -40,7 +40,6 @@ def count_sort_with_counter(arr):
     return result
 
 
-
 if __name__ == "__main__":
     arr = [0, 0, 2, 1, 5, 2, 4, 9, 2, 2, 4, 2, 3]
     print(count_sort(arr))

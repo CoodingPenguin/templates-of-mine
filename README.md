@@ -16,6 +16,7 @@
 
 - [깊이 우선 탐색 DFS](./graph/dfs.py)
 - [너비 우선 탐색 BFS](./graph/bfs.py)
+- [인접 행렬과 리스트](./graph/adjacent_matrix_and_list.py)
 
 ## Sort
 

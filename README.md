@@ -10,23 +10,23 @@
 
 ## Linear Algebra
 
-- [행렬 90도 시계방향 회전](./linear-algebra/rotate_matrix_by_90.py)
+- [행렬 90도 시계방향 회전](./algorithms/linear-algebra/rotate_matrix_by_90.py)
 
 ## Graph
 
-- [깊이 우선 탐색 DFS](./graph/dfs.py)
-- [너비 우선 탐색 BFS](./graph/bfs.py)
-- [인접 행렬과 리스트](./graph/adjacent_matrix_and_list.py)
-- [다익스트라 알고리즘](./graph/dijkstra.py)
-- [플로이드 워셜 알고리즘](./graph/floyd_warshall.py)
+- [깊이 우선 탐색 DFS](./algorithms/graph/dfs.py)
+- [너비 우선 탐색 BFS](./algorithms/graph/bfs.py)
+- [인접 행렬과 리스트](./algorithms/graph/adjacent_matrix_and_list.py)
+- [다익스트라 알고리즘](./algorithms/graph/dijkstra.py)
+- [플로이드 워셜 알고리즘](./algorithms/graph/floyd_warshall.py)
 
 ## Sort
 
-- [선택 정렬](./sort/selection_sort.py)
-- [삽입 정렬](./sort/insertion_sort.py)
-- [퀵 정렬](./sort/quick_sort.py)
+- [선택 정렬](./algorithms/sort/selection_sort.py)
+- [삽입 정렬](./algorithms/sort/insertion_sort.py)
+- [퀵 정렬](./algorithms/sort/quick_sort.py)
 - [계수 정렬](.sort/count_sort.py)
 
 # Search
 
-- [이진 탐색](./search/binary_search.py)
+- [이진 탐색](./algorithms/search/binary_search.py)

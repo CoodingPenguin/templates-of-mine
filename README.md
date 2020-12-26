@@ -14,7 +14,7 @@
 - `알고리즘` : 필수 알고리즘을 **Python**으로 정리합니다. 출처는 `src`에, 시간복잡도는 `time`으로 주석에 표시합니다.
 - `데이터분석` : 대표적인 데이터(ex. 타이타닉)를 가지고 프레임워크, 라이브러리, 패키지의 사용 예제를 작성합니다. 함수는 인수와 반환값에 대한 설명을 꼭 적습니다.
 
-<details markdown="1" open="open">
+<details markdown="1">
 <summary><strong>📌 참고한 사이트/책/강의</strong></summary>
 
 <br/>

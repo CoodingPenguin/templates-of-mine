@@ -11,19 +11,24 @@
 
 ## 👩‍💻 작성 규칙
 
-(작성 중)
+- `알고리즘` : 필수 알고리즘을 **Python**으로 정리합니다. 출처는 `src`에, 시간복잡도는 `time`으로 주석에 표시합니다.
+- `데이터분석` : 대표적인 데이터(ex. 타이타닉)를 가지고 프레임워크, 라이브러리, 패키지의 사용 예제를 작성합니다. 함수는 인수와 반환값에 대한 설명을 꼭 적습니다.
 
-대표적인 알고리즘 사이트와 책을 가지고 공부하면서 꼭 알아야할 필수 알고리즘들을 **Python**으로 정리합니다!
-아래와 같은 사이트와 책을 참고하였으며 출처는 주석의 `src` 부분으로 확인하실 수 있습니다.
-
-<details markdown="1">
+<details markdown="1" open="open">
 <summary><strong>📌 참고한 사이트/책/강의</strong></summary>
 
+<br/>
 
-- [백준 단계별 문제](https://www.acmicpc.net/step)
-- [프로그래머스 코딩테스트 준비](https://programmers.co.kr/learn/challenges?tab=all_challenges)
-- [이것이 취업을 위한 코딩테스트다 with 파이썬](http://www.yes24.com/Product/Goods/91433923)
- 
+|     대상     |  분류  |                                             제목                                              |
+| :----------: | :----: | :-------------------------------------------------------------------------------------------: |
+|  `알고리즘`  | 사이트 |                       [백준 단계별 문제](https://www.acmicpc.net/step)                        |
+|  `알고리즘`  | 사이트 | [프로그래머스 코딩테스트 준비](https://programmers.co.kr/learn/challenges?tab=all_challenges) |
+|  `알고리즘`  |   책   |  [이것이 취업을 위한 코딩테스트다 with 파이썬](http://www.yes24.com/Product/Goods/91433923)   |
+| `데이터분석` | 사이트 |                [데이터사이언스스쿨](https://datascienceschool.net/intro.html)                 |
+| `데이터분석` | 사이트 |             [Missingno Documentation](https://github.com/ResidentMario/missingno)             |
+| `데이터분석` | 사이트 |   [Pandas Documentation](https://pandas.pydata.org/pandas-docs/stable/reference/index.html)   |
+| `데이터분석` | 사이트 |               [Matplotlib Documentation](https://matplotlib.org/api/index.html)               |
+
 </details>
 
 

@@ -18,7 +18,10 @@ def find_parent_basic(parent, x):
 def find_parent_improved(parent, x):
     '''
     재귀적으로 특정 원소가 속한 집합을 찾아 부모 테이블을 갱신한다
+    - `parent`: 1차원 부모 테이블
+    - `x`: 부모를 찾으려는 노드 번호
     '''
+    # 루트 노드가 아니라면, 루트 노드를 찾을 때까지 재귀적으로 호출
     if parent[x] != x:
         parent[x] = find_parent_improved(parent, parent[x])
     return parent[x]
@@ -39,10 +42,8 @@ def union_parent(parent, a, b):
 
 
 if __name__ == "__main__":
-    # 노드와 간선의 개수
-    v, e = map(int, input().split())
-    # 부모 테이블
-    parent = [0] + list(range(1, v+1))
+    v, e = map(int, input().split())    # 노드와 간선의 개수
+    parent = [0] + list(range(1, v+1))  # 부모 테이블
 
     # 입력 받은 노드 값에 대한 Union 연산 실행
     for i in range(e):

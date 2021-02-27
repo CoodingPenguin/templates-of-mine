@@ -45,17 +45,15 @@
 - [크루스칼 알고리즘](algorithm/kruskal.py)
 - [위상 정렬](./algorithm/topology_sort.py)
 
-**[☝ 위로 올라가기](#)**
-
 ---
 
 ### [자료구조](./data-structure)
 
 - [인정 행렬과 인접 리스트](./data-structure/adjacent_matrix_and_list.py)
 
-**[☝ 위로 올라가기](#)**
-
 ---
+
+**[☝ 위로 올라가기](#)**
 
 <br/>
 
@@ -66,8 +64,6 @@
 - [Numpy](./python-library/numpy/numpy_cheatsheet.ipynb)
 - [Pandas](./python-library/pandas/pandas_cheatsheet.ipynb)
 
-**[☝ 위로 올라가기](#)**
-
 ---
 
 ### [데이터 시각화](./data-visualization)
@@ -75,14 +71,12 @@
 - [Missingno](./data-visualization/missingno.ipynb)
 - [Pieplot](./data-visualzation/pieplot.ipynb)
 
-**[☝ 위로 올라가기](#)**
-
 ---
 
 ### [Effective Python](./effective-python)
 
 - [1장. 파이썬답게 생각하기](./effective-python/01장_파이썬답게_생각하기.md)
 
-**[☝ 위로 올라가기](#)**
-
 ---
+
+**[☝ 위로 올라가기](#)**

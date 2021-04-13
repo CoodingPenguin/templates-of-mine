@@ -1,5 +1,4 @@
-# 👀 Pandas Cheatsheet
-
+# Pandas Cheatsheet
 
 ```python
 import numpy as np
@@ -12,16 +11,16 @@ warnings.filterwarnings("ignore")
 ```
 
 ## 1. Pandas
-구조화된 데이터의 처리를 지원하는 Python 라이브러리로 주로 데이터 처리 및 통계 분석을 위해 사용한다.
 
+구조화된 데이터의 처리를 지원하는 Python 라이브러리로 주로 데이터 처리 및 통계 분석을 위해 사용한다.
 
 ### 1.1. Terminology
 
 ![용어](./img/terminology.png)
 
 ## 2. Data Load
-### 2.1. read_csv
 
+### 2.1. read_csv
 
 ```python
 data_url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data'
@@ -31,23 +30,8 @@ df = pd.read_csv(data_url, sep='\s+', header=None)
 df.head()
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -158,33 +142,15 @@ df.head()
 </table>
 </div>
 
-
-
 `data_columns`로 **컬럼 이름 지정**도 가능하다.
-
 
 ```python
 df.data_columns =  ["CRIM", "ZN", "INDUS", "CHAS", "NOX", "RM", "AGE", "DIS", "RAD", "TAX", "PTRATIO", "B", "LSTAT", "MEDV"]
 df.head()
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -295,10 +261,10 @@ df.head()
 </table>
 </div>
 
-
-
 ## 3. Series
+
 데이터프레임 중 **하나의 컬럼**에 해당하는 데이터 객체
+
 - `numpy.ndarray`의 서브 클래스이다.
 - 데이터 타입은 모든 자료형 사용 가능하다.
 - 인덱스 라벨은 정렬할 필요가 없다.
@@ -308,7 +274,6 @@ df.head()
 
 #### 3.1.1. 리스트
 
-
 ```python
 # 리스트로 데이터 생성
 list_data = [1, 2, 3, 4, 5]
@@ -316,18 +281,12 @@ example_obj = pd.Series(data=list_data)
 example_obj
 ```
 
-
-
-
     0    1
     1    2
     2    3
     3    4
     4    5
     dtype: int64
-
-
-
 
 ```python
 # 리스트로 인덱스와 데이터 리스트를 따로 만들어 지정 가능
@@ -337,9 +296,6 @@ example_obj = pd.Series(data=list_data, index=list_name)
 example_obj
 ```
 
-
-
-
     a    1
     b    2
     c    3
@@ -347,10 +303,7 @@ example_obj
     e    5
     dtype: int64
 
-
-
 #### 3.1.2. 딕셔너리
-
 
 ```python
 # 딕셔너리로 인덱스를 지정하여 데이터 생성
@@ -360,9 +313,6 @@ example_obj = pd.Series(dict_data, dtype=np.int16, name="exmaple_obj")
 example_obj
 ```
 
-
-
-
     a    1
     b    2
     c    3
@@ -370,21 +320,12 @@ example_obj
     e    5
     Name: exmaple_obj, dtype: int16
 
-
-
-
 ```python
 # 다시 dict로 변환 가능
 example_obj.to_dict()
 ```
 
-
-
-
     {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5}
-
-
-
 
 ```python
 # 항상 인덱스를 기준으로 Series를 생성
@@ -393,9 +334,6 @@ indexes = ["a", "b", "c", "d", "e", "f", "g", "h"]
 example_obj_2 = pd.Series(dict_data_2, index=indexes)
 example_obj_2
 ```
-
-
-
 
     a    1.0
     b    2.0
@@ -407,20 +345,14 @@ example_obj_2
     h    NaN
     dtype: float64
 
-
-
 ### 3.2. Series의 속성
 
 #### 3.2.1. name - 테이블 이름
-
 
 ```python
 example_obj.name = "series name what?"
 example_obj
 ```
-
-
-
 
     a    1
     b    2
@@ -429,32 +361,20 @@ example_obj
     e    5
     Name: series name what?, dtype: int16
 
-
-
 #### 3.2.2. index - 인덱스 객체
-
 
 ```python
 # Series의 인덱스 객체반환
 example_obj.index
 ```
 
-
-
-
     Index(['a', 'b', 'c', 'd', 'e'], dtype='object')
-
-
-
 
 ```python
 # 인덱스의 이름도 설정 가능
 example_obj.index.name = "index name what?"
 example_obj
 ```
-
-
-
 
     index name what?
     a    1
@@ -464,10 +384,7 @@ example_obj
     e    5
     Name: series name what?, dtype: int16
 
-
-
 #### 3.2.3. values
-
 
 ```python
 # Series의 데이터(value)를 반환하며 자료형은 numpy.ndarray
@@ -476,17 +393,14 @@ example_obj.values
 ```
 
     series.values의 자료형 : <class 'numpy.ndarray'>
-    
+
 
 
 
 
     array([1, 2, 3, 4, 5], dtype=int16)
 
-
-
 ### 3.3. Series와 in 연산자
-
 
 ```python
 # Index(Key) 값 여부를 확인
@@ -496,32 +410,21 @@ print("z exists?", "z" in example_obj)
 
     b exists? True
     z exists? False
-    
 
 ### 3.4. Series의 데이터 접근
-
 
 ```python
 # Index 인덱싱으로 접근 가능
 example_obj["a"]
 ```
 
-
-
-
     1
-
-
-
 
 ```python
 # 접근한 인덱스에 값 할당 가능
 example_obj["a"] = 10
 example_obj
 ```
-
-
-
 
     index name what?
     a    10
@@ -531,10 +434,7 @@ example_obj
     e     5
     Name: series name what?, dtype: int16
 
-
-
 ### 3.5. astype - 자료형 지정
-
 
 ```python
 # 데이터의 자료형 변경
@@ -543,9 +443,6 @@ example_obj = example_obj.astype(np.float64)
 example_obj
 ```
 
-
-
-
     index name what?
     a    10.0
     b     2.0
@@ -553,17 +450,11 @@ example_obj
     d     4.0
     e     5.0
     Name: series name what?, dtype: float64
-
-
-
 
 ```python
 example_obj
 ```
 
-
-
-
     index name what?
     a    10.0
     b     2.0
@@ -572,17 +463,16 @@ example_obj
     e     5.0
     Name: series name what?, dtype: float64
 
-
-
 ## 4. Dataframe
+
 데이터 테이블 전체를 포함하는 객체
+
 - `numpy` 배열과 비슷하다.
 - 각 컬럼이 각자 다른 자료형을 가지고 있다.
 - 행과 열에 각각 인덱스가 있다.
 - 컬럼은 삽입하고 삭제하면서 크기를 조절할 수 있다.
 
 ### 4.1. Dataframe 생성
-
 
 ```python
 # 출처: https://chrisalbon.com/python/pandas_map_values_to_values.html
@@ -594,7 +484,6 @@ raw_data = {
 }
 ```
 
-
 ```python
 # 딕셔너리의 key값에 대응해서 DataFrame 생성
 column_names1 = ["first_name", "last_name", "age", "city"]
@@ -602,23 +491,8 @@ df = pd.DataFrame(raw_data, columns=column_names1)
 df
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -669,32 +543,14 @@ df
 </table>
 </div>
 
-
-
-
 ```python
 # 일부만 가져와서 생성 가능
 column_names2 = ["age", "city"]
 pd.DataFrame(raw_data, columns=column_names2)
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -733,32 +589,14 @@ pd.DataFrame(raw_data, columns=column_names2)
 </table>
 </div>
 
-
-
-
 ```python
 # 딕셔너리에 없는 값이면 새로운 컬럼을 생성하고 NaN으로 채움
 column_names3 = ["first_name", "last_name", "age", "city", "debt"]
 pd.DataFrame(raw_data, columns=column_names3)
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -815,37 +653,25 @@ pd.DataFrame(raw_data, columns=column_names3)
 </table>
 </div>
 
-
-
 ### 4.2. DataFrame의 컬럼 선택
-
 
 ```python
 # 방법 1. 인덱싱
 df["first_name"]
 ```
 
-
-
-
     0    Jason
     1    Molly
     2     Tina
     3     Jake
     4      Amy
     Name: first_name, dtype: object
-
-
-
 
 ```python
 # 방법 2. 객체 속성 "."으로 접근
 df.first_name
 ```
 
-
-
-
     0    Jason
     1    Molly
     2     Tina
@@ -853,35 +679,17 @@ df.first_name
     4      Amy
     Name: first_name, dtype: object
 
-
-
 ### 4.4. Dataframe 인덱싱
 
 #### 4.4.1. loc - 명칭 기반 인덱싱
-
 
 ```python
 # loc[추출하려는 인덱스 리스트, 추출하려는 컬럼이름 리스트]
 df.loc[[0, 1, 2], ["first_name", "last_name"]]
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -910,9 +718,6 @@ df.loc[[0, 1, 2], ["first_name", "last_name"]]
 </table>
 </div>
 
-
-
-
 ```python
 # 컬럼 인덱스에 컬럼 이름 문자열만 오면 Series를 반환
 print("자료형 :", type(df.loc[:, "last_name"]))
@@ -920,7 +725,7 @@ df.loc[:, "last_name"]
 ```
 
     자료형 : <class 'pandas.core.series.Series'>
-    
+
 
 
 
@@ -932,9 +737,6 @@ df.loc[:, "last_name"]
     4       Cooze
     Name: last_name, dtype: object
 
-
-
-
 ```python
 # 컬럼 인덱스에 컬럼 이름으로 이루어진 리스트가 오면 DataFrame을 반환
 print("자료형 :", type(df.loc[:, ["last_name"]]))
@@ -942,25 +744,9 @@ df.loc[:, ["last_name"]]
 ```
 
     자료형 : <class 'pandas.core.frame.DataFrame'>
-    
-
-
-
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -993,33 +779,15 @@ df.loc[:, ["last_name"]]
 </table>
 </div>
 
-
-
 #### 4.4.2. iloc - 위치 기반 인덱싱
-
 
 ```python
 # iloc[인덱스 인덱싱/슬라이싱, 컬럼 위치 인덱싱/슬라이싱]
 df.iloc[:2, :2]
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1043,17 +811,11 @@ df.iloc[:2, :2]
 </table>
 </div>
 
-
-
-
 ```python
 # 컬럼을 숫자로 지정하여 접근
 # 컬럼 인덱스에 정수만 들어갈 경우 Series를 반환
 df.iloc[:, 1]
 ```
-
-
-
 
     0      Miller
     1    Jacobson
@@ -1062,31 +824,13 @@ df.iloc[:, 1]
     4       Cooze
     Name: last_name, dtype: object
 
-
-
-
 ```python
 # 컬럼 인덱스에 정수 리스트가 오면 DataFrame을 반환
 df.iloc[:, 1:3]
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1125,16 +869,10 @@ df.iloc[:, 1:3]
 </table>
 </div>
 
-
-
-
 ```python
 # 컬럼을 추출해서 인덱스에 접근 가능
 df["age"].iloc[1:]
 ```
-
-
-
 
     1    52
     2    36
@@ -1142,19 +880,13 @@ df["age"].iloc[1:]
     4    73
     Name: age, dtype: int64
 
-
-
 ### 4.2.3. loc와 iloc 차이
-
 
 ```python
 # 출처: https://stackoverflow.com/questions/31593201/pandas-iloc-vs-ix-vs-loc-explanation
 df_loc_iloc = pd.Series(np.nan, index=[49, 48, 47, 46, 45, 1, 2, 3, 4, 5])
 df_loc_iloc
 ```
-
-
-
 
     49   NaN
     48   NaN
@@ -1168,17 +900,11 @@ df_loc_iloc
     5    NaN
     dtype: float64
 
-
-
-`loc`는 명칭 기반 인덱스이므로 숫자 정렬과 상관없이 **인덱스인 3까지 추출**한다. 인덱스가 문자열이어도 가능하다. 
-
+`loc`는 명칭 기반 인덱스이므로 숫자 정렬과 상관없이 **인덱스인 3까지 추출**한다. 인덱스가 문자열이어도 가능하다.
 
 ```python
 df_loc_iloc.loc[:3]
 ```
-
-
-
 
     49   NaN
     48   NaN
@@ -1190,35 +916,23 @@ df_loc_iloc.loc[:3]
     3    NaN
     dtype: float64
 
-
-
 `iloc`는 위치 기반 인덱스이므로 Series의 인덱스와 상관 없이 위에서 0, 1, 2, ... 로 순서를 매길 때 3번째까지를 추출한다.
-
 
 ```python
 df_loc_iloc.iloc[:3]
 ```
-
-
-
 
     49   NaN
     48   NaN
     47   NaN
     dtype: float64
 
-
-
 ## 5. Boolean Indexing
-
 
 ```python
 # 각 데이터의 기본연산자 결과를 Series를 묶어서 반환
 df.age > 40
 ```
-
-
-
 
     0     True
     1     True
@@ -1227,12 +941,9 @@ df.age > 40
     4     True
     Name: age, dtype: bool
 
-
-
 ## 6. Dataframe Handling
 
 ### 6.1. 새로운 컬럼 추가
-
 
 ```python
 # Series로 새로운 컬럼 추가
@@ -1242,23 +953,8 @@ df["gender"] = new_values
 df
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1314,9 +1010,6 @@ df
   </tbody>
 </table>
 </div>
-
-
-
 
 ```python
 # 불리언으로 이루어진 Series의 값으로 이루어진 새로운 컬럼 추가
@@ -1324,23 +1017,8 @@ df["is_old"] = df.age > 40
 df
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1402,9 +1080,6 @@ df
   </tbody>
 </table>
 </div>
-
-
-
 
 ```python
 # 리스트도 가능하지만 데이터 개수와 리스트의 길이가 동일해야 한다
@@ -1412,23 +1087,8 @@ df["height"] = [160, 180, 170, 175, 150]
 df
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1496,9 +1156,6 @@ df
   </tbody>
 </table>
 </div>
-
-
-
 
 ```python
 # ndarray도 가능하며 리스트처럼 데이터 개수만큼의 값이 있어야 한다
@@ -1506,23 +1163,8 @@ df["weight"] = np.array([50, 60, 70, 65, 55])
 df
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1597,33 +1239,15 @@ df
 </table>
 </div>
 
-
-
 ### 6.2. 전치 (transpose)
-
 
 ```python
 # 컬럼이 오른쪽으로 오면서 컬럼을 좀 더 보기 쉬움
 df.T
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1704,18 +1328,12 @@ df.T
 </table>
 </div>
 
-
-
 ### 6.3. values
-
 
 ```python
 # 값만 모아서 2차원 ndarray로 반환
 df.values
 ```
-
-
-
 
     array([['Jason', 'Miller', 42, 'San Francisco', 'M', True, 160, 50],
            ['Molly', 'Jacobson', 52, 'Baltimore', 'F', True, 180, 60],
@@ -1723,25 +1341,16 @@ df.values
            ['Jake', 'Milner', 24, 'Douglas', 'F', False, 175, 65],
            ['Amy', 'Cooze', 73, 'Boston', nan, True, 150, 55]], dtype=object)
 
-
-
 ### 6.4. index
-
 
 ```python
 # 인덱스만 뽑아서 반환
 df.index
 ```
 
-
-
-
     RangeIndex(start=0, stop=5, step=1)
 
-
-
 ### 6.5. to_csv - csv로 변환
-
 
 ```python
 # csv로 변환할 수 있으며, path를 지정하면 저장이 가능
@@ -1750,30 +1359,14 @@ df.to_csv("./data/dataframe-practice.csv")
 
 ### 6.6. del
 
-
 ```python
 # del 키워드로 컬럼 삭제
 del df["weight"]
 df
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1842,10 +1435,7 @@ df
 </table>
 </div>
 
-
-
 ## 7. Selection
-
 
 ```python
 # xlsx은 xlrd < 2.0.0에서만 지원
@@ -1853,23 +1443,8 @@ df = pd.read_excel("./data/excel-comp-data.xlsx")
 df.head()
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1950,18 +1525,12 @@ df.head()
 </table>
 </div>
 
-
-
 ### 7.1. 컬럼 이름으로 선택
-
 
 ```python
 # 1개 컬럼 선택 시 Series 반환
 df['account'].head()
 ```
-
-
-
 
     0    211829
     1    320563
@@ -1970,31 +1539,13 @@ df['account'].head()
     4    121213
     Name: account, dtype: int64
 
-
-
-
 ```python
 # 여러 컬럼 리스트로 선택 시 DataFrame 반환
 df[["account", "street", "state"]].head()
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -2039,33 +1590,15 @@ df[["account", "street", "state"]].head()
 </table>
 </div>
 
-
-
 ### 7.2. 인덱스로 선택
-
 
 ```python
 # 세번째 데이터까지만 추출
 df[:3]
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -2122,32 +1655,20 @@ df[:3]
 </table>
 </div>
 
-
-
-
 ```python
 # 컬럼 이름과 인덱스 지정시 해당 컬럼의 데이터만 추출
 df["account"][:3]
 ```
-
-
-
 
     0    211829
     1    320563
     2    648336
     Name: account, dtype: int64
 
-
-
-
 ```python
 # 리스트로 인덱스 지정 가능
 df["account"][[1, 3, 5, 7, 9]]
 ```
-
-
-
 
     1    320563
     3    109996
@@ -2156,16 +1677,10 @@ df["account"][[1, 3, 5, 7, 9]]
     9    212303
     Name: account, dtype: int64
 
-
-
-
 ```python
 # 불리언 인덱싱으로 True인 데이터만 추출
 df["account"][df["account"] < 250000]
 ```
-
-
-
 
     0     211829
     3     109996
@@ -2180,10 +1695,7 @@ df["account"][df["account"] < 250000]
     12    242368
     Name: account, dtype: int64
 
-
-
 ### 7.3. 인덱스 변경
-
 
 ```python
 # 한 컬럼을 직접 인덱스로 지정
@@ -2192,23 +1704,8 @@ del df["account"]
 df.head()
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -2294,10 +1791,7 @@ df.head()
 </table>
 </div>
 
-
-
 ### 7.4. reset_index - 인덱스 재설정
-
 
 ```python
 # 기존 인덱스는 새로운 피처가 되고 다시 넘버링하여 새로운 인덱스 생성
@@ -2306,29 +1800,13 @@ df.reset_index(inplace=True)
 
 ### 7.5. drop - 삭제
 
-
 ```python
 # 인덱스 번호로 데이터 제거
 df.drop(1)
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -2517,31 +1995,13 @@ df.drop(1)
 </table>
 </div>
 
-
-
-
 ```python
 # 정수 리스트로 여러 개의 데이터 제거
 df.drop([0, 1, 2, 3])
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -2694,31 +2154,13 @@ df.drop([0, 1, 2, 3])
 </table>
 </div>
 
-
-
-
 ```python
 # axis=1로 지정해서 특정 컬럼 제거
 df.drop("city", axis=1)
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -2903,31 +2345,13 @@ df.drop("city", axis=1)
 </table>
 </div>
 
-
-
-
 ```python
 # 컬럼 이름 리스트로 여러 개의 특정 컬럼 제거
 df.drop(["city", "state"], axis=1)
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -3096,21 +2520,15 @@ df.drop(["city", "state"], axis=1)
 </table>
 </div>
 
-
-
 ## 8. Dataframe Operations
 
 ### 8.1. Series Operations
-
 
 ```python
 s1 = pd.Series(range(1, 6), index=list("abced"))
 s2 = pd.Series(range(5, 11), index=list("bcedef"))
 s1, s2
 ```
-
-
-
 
     (a    1
      b    2
@@ -3125,9 +2543,6 @@ s1, s2
      e     9
      f    10
      dtype: int64)
-
-
-
 
 ```python
 # 덧셈
@@ -3152,8 +2567,6 @@ print(s1.add(s2))
     e    13.0
     f     NaN
     dtype: float64
-    
-
 
 ```python
 # 뺼셈
@@ -3177,8 +2590,6 @@ print(s1.sub(s2))
     e   -5.0
     f    NaN
     dtype: float64
-    
-
 
 ```python
 # 곱셈
@@ -3202,8 +2613,6 @@ print(s1.mul(s2))
     e    36.0
     f     NaN
     dtype: float64
-    
-
 
 ```python
 # 나눗셈
@@ -3227,33 +2636,16 @@ print(s1.div(s2))
     e    0.444444
     f         NaN
     dtype: float64
-    
 
 ### 8.2. Dataframe Operations
-
 
 ```python
 df1 = pd.DataFrame(np.arange(9).reshape(3, 3), columns=list("abc"))
 df1
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -3286,31 +2678,13 @@ df1
 </table>
 </div>
 
-
-
-
 ```python
 df2 = pd.DataFrame(np.arange(16).reshape(4, 4), columns=list("abcd"))
 df2
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -3354,32 +2728,14 @@ df2
 </table>
 </div>
 
-
-
-
 ```python
 # 덧셈
 # 인덱스와 컬럼 모두 고려하며 데이터가 없는 경우 NaN으로 반환
 df1 + df2
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -3423,31 +2779,13 @@ df1 + df2
 </table>
 </div>
 
-
-
-
 ```python
 # fill_value로 NaN을 다른 값으로 대체 가능
 df1.add(df2, fill_value=0)
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -3491,9 +2829,6 @@ df1.add(df2, fill_value=0)
 </table>
 </div>
 
-
-
-
 ```python
 # 뺼셈
 print(df1 - df2)
@@ -3510,8 +2845,6 @@ print(df1.sub(df2))
     1 -1.0 -1.0 -1.0 NaN
     2 -2.0 -2.0 -2.0 NaN
     3  NaN  NaN  NaN NaN
-    
-
 
 ```python
 # 곱셈
@@ -3529,8 +2862,6 @@ print(df1.mul(df2))
     1  12.0  20.0  30.0 NaN
     2  48.0  63.0  80.0 NaN
     3   NaN   NaN   NaN NaN
-    
-
 
 ```python
 # 나눗셈
@@ -3548,35 +2879,18 @@ print(df1.div(df2))
     1  0.75  0.800000  0.833333 NaN
     2  0.75  0.777778  0.800000 NaN
     3   NaN       NaN       NaN NaN
-    
 
 ### 8.3. Operations with Dataframe and Series
 
 #### 8.3.1. Series에 인덱스가 Dataframe의 컬럼 이름인 경우
-
 
 ```python
 df = pd.DataFrame(np.arange(16).reshape(4, 4), columns=list("abcd"))
 df
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -3620,16 +2934,10 @@ df
 </table>
 </div>
 
-
-
-
 ```python
 s = pd.Series(np.arange(10, 14), index=list("abcd"))
 s
 ```
-
-
-
 
     a    10
     b    11
@@ -3637,31 +2945,13 @@ s
     d    13
     dtype: int32
 
-
-
-
 ```python
 # 각 컬럼에 덧셈 수행
 df + s
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -3705,18 +2995,12 @@ df + s
 </table>
 </div>
 
-
-
 #### 8.3.2. Series 인덱스가 Dataframe의 컬럼 이름이 아닌 경우
-
 
 ```python
 s2 = pd.Series(np.arange(10, 14))
 s2
 ```
-
-
-
 
     0    10
     1    11
@@ -3724,31 +3008,13 @@ s2
     3    13
     dtype: int32
 
-
-
-
 ```python
 # 그냥 더하면 기준값이 없어 모두 NaN값이 됨
 df + s2
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -3812,31 +3078,13 @@ df + s2
 </table>
 </div>
 
-
-
-
 ```python
 # axis를 기준으로 row broadcasting을 수행
 df.add(s2, axis=0)
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -3880,24 +3128,19 @@ df.add(s2, axis=0)
 </table>
 </div>
 
-
-
 ## 9. map, apply
 
 ### 9.1. map
+
 - **Series 데이터(특정 컬럼)**를 변환하고 싶을 때 사용한다.
 - 함수의 입력값은 **Series의 요소 하나씩**이다.
 
 #### 9.1.1. map with lambda
 
-
 ```python
 s1 = pd.Series(np.arange(10))
 s1.head(5)
 ```
-
-
-
 
     0    0
     1    1
@@ -3906,16 +3149,10 @@ s1.head(5)
     4    4
     dtype: int32
 
-
-
-
 ```python
 # labmda식으로 함수 정의
 s1.map(lambda x: x**2).head()
 ```
-
-
-
 
     0     0
     1     1
@@ -3923,9 +3160,6 @@ s1.map(lambda x: x**2).head()
     3     9
     4    16
     dtype: int64
-
-
-
 
 ```python
 # 일반 함수도 가능
@@ -3934,9 +3168,6 @@ def func(x):
 s1.map(func).head()
 ```
 
-
-
-
     0     0
     1     1
     2     4
@@ -3944,19 +3175,13 @@ s1.map(func).head()
     4    16
     dtype: int64
 
-
-
 #### 9.1.2. map with dict
-
 
 ```python
 # 인덱스에 맞춰 value 변환
 z = {1: "A", 2: "B", 3: "C"}
 s1.map(z).head()
 ```
-
-
-
 
     0    NaN
     1      A
@@ -3965,31 +3190,13 @@ s1.map(z).head()
     4    NaN
     dtype: object
 
-
-
-
 ```python
 df = pd.read_csv("./data/wages.csv")
 df.head()
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -4052,32 +3259,14 @@ df.head()
 </table>
 </div>
 
-
-
-
 ```python
 # Label Indexing할 때 좋다
 df["sex_bin"] = df.sex.map({"male": 0, "female": 1})
 df.head()
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -4146,19 +3335,13 @@ df.head()
 </table>
 </div>
 
-
-
 #### 9.1.3. map with Series
-
 
 ```python
 # 같은 위치의 Series 값으로 대체
 s2 = pd.Series(np.arange(10, 20))
 s1.map(s2).head()
 ```
-
-
-
 
     0    10
     1    11
@@ -4167,19 +3350,14 @@ s1.map(s2).head()
     4    14
     dtype: int32
 
-
-
 ### 9.2. replace
-`map` 함수의 기능 중 **데이터 변환 기능**만 떼어온 함수
 
+`map` 함수의 기능 중 **데이터 변환 기능**만 떼어온 함수
 
 ```python
 # map과 똑같이 dict를 넣어서 변환 가능
 df.sex.replace({"male": 0, "female": 1}).head()
 ```
-
-
-
 
     0    0
     1    1
@@ -4188,32 +3366,14 @@ df.sex.replace({"male": 0, "female": 1}).head()
     4    1
     Name: sex, dtype: int64
 
-
-
-
 ```python
 # to_replace 리스트와 value 리스트로 1:1 대응시켜 변환 가능
 df.sex.replace(to_replace=["male", "female"], value=[0, 1], inplace=True)
 df.head()
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -4282,35 +3442,18 @@ df.head()
 </table>
 </div>
 
-
-
 ### 9.3. apply
+
 - 전체 컬럼 즉, **데이터프레임**에 함수를 적용시킨다.
 - 함수의 입력값은 **Series**이다.
-
 
 ```python
 df = pd.read_csv("./data/wages.csv")
 df.head()
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -4373,31 +3516,13 @@ df.head()
 </table>
 </div>
 
-
-
-
 ```python
 df_eha = df[["earn", "height", "age"]]
 df_eha.head()
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -4442,68 +3567,44 @@ df_eha.head()
 </table>
 </div>
 
-
-
 #### 9.3.1. apply with lambda
-
 
 ```python
 # 각 컬럼별 결과값을 반환
 df_eha.apply(lambda x: x.max() - x.min())
 ```
 
-
-
-
     earn      318047.708444
     height        19.870000
     age           73.000000
     dtype: float64
 
-
-
 #### 9.3.2. apply with built-in function
-
 
 ```python
 # 내장함수를 쓰는 것과 동일
 df_eha.apply(sum)
 ```
 
-
-
-
     earn      4.474344e+07
     height    9.183125e+04
     age       6.250800e+04
     dtype: float64
-
-
-
 
 ```python
 df_eha.sum()
 ```
 
-
-
-
     earn      4.474344e+07
     height    9.183125e+04
     age       6.250800e+04
     dtype: float64
-
-
-
 
 ```python
 # mean - 각 컬럼별 평균
 # std - 각 컬렴별 표준편차
 df_eha.apply(np.mean), df_eha.apply(np.std)
 ```
-
-
-
 
     (earn      32446.292622
      height       66.592640
@@ -4514,10 +3615,7 @@ df_eha.apply(np.mean), df_eha.apply(np.std)
      age          15.783988
      dtype: float64)
 
-
-
 #### 9.3.3. apply with Series
-
 
 ```python
 # 스칼라 값 외에 Series 값도 반환이 가능
@@ -4527,23 +3625,8 @@ def func(x):
 df_eha.apply(func)
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -4570,37 +3653,21 @@ df_eha.apply(func)
 </table>
 </div>
 
-
-
 ### 9.4. applymap
+
 `map`은 Series에만 적용 가능한데 DataFrame에 `map`과 같은 효과를 내고 싶을 때 사용한다.
+
 - Series 단위로 적용하는 `apply`와는 달리 **요소 단위**로 함수를 적용한다.
 - 함수의 입력은 **Series의 요소 하나**이다.
 - Series에 `apply`를 적용했을 때와 같은 효과를 낸다.
-
 
 ```python
 # 함수를 모든 요소에 적용
 df_eha.applymap(lambda x: -x).head()
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -4645,16 +3712,10 @@ df_eha.applymap(lambda x: -x).head()
 </table>
 </div>
 
-
-
-
 ```python
 # Series에 apply를 적용시킨 것과 같은 효과
 df_eha.earn.apply(lambda x: -x).head()
 ```
-
-
-
 
     0   -79571.299011
     1   -96396.988643
@@ -4663,33 +3724,15 @@ df_eha.earn.apply(lambda x: -x).head()
     4   -82089.345498
     Name: earn, dtype: float64
 
-
-
 ## 10. Pandas Built-in Functions
-
 
 ```python
 df = pd.read_csv("./data/wages.csv")
 df.head(2).T
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -4733,10 +3776,7 @@ df.head(2).T
 </table>
 </div>
 
-
-
 ### 10.1. describe - 데이터 요약 정보
-
 
 ```python
 # Numeric 데이터의 통계적 정보를 보여준다
@@ -4744,23 +3784,8 @@ df.head(2).T
 df.describe()
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -4832,36 +3857,25 @@ df.describe()
 </table>
 </div>
 
-
-
 ### 10.2. unique - Series 데이터의 유일값 리스트 반환
-
 
 ```python
 df.race.unique()
 ```
 
-
-
-
     array(['white', 'other', 'hispanic', 'black'], dtype=object)
 
-
-
 ### 10.3. 기본 연산
+
 - `sum`, `sub`, `mean`, `min`, `max`, `count`, `median`, `mad`, `var` 등 다양한 연산을 지원한다.
 - axis를 설정하여 적용 축을 설정할 수 있다.
-    - `axis=0`: 컬럼별 적용
-    - `axis=1`: 데이터(로우)별 적용
-
+  - `axis=0`: 컬럼별 적용
+  - `axis=1`: 데이터(로우)별 적용
 
 ```python
 # 컬럼별 적용
 df.sum(axis=0)
 ```
-
-
-
 
     earn                                          44743437.5254
     height                                             91831.25
@@ -4871,23 +3885,17 @@ df.sum(axis=0)
     age                                                   62508
     dtype: object
 
-
-
-
 ```python
 # 데이터/로우별 적용
 df.sum(axis=1)
 ```
-
-
-
 
     0       79710.189011
     1       96541.218643
     2       48823.436947
     3       80652.316153
     4       82212.425498
-                ...     
+                ...
     1374    30290.060363
     1375    25018.829514
     1376    13823.311312
@@ -4895,32 +3903,14 @@ df.sum(axis=1)
     1378     9686.681857
     Length: 1379, dtype: float64
 
-
-
 ### 10.4. isnull - NaN값의 인덱스 반환
-
 
 ```python
 df.isnull()
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -5038,16 +4028,10 @@ df.isnull()
 <p>1379 rows × 6 columns</p>
 </div>
 
-
-
-
 ```python
 # sum을 사용하여 컬럼별 결측치 개수를 구할 수 있다
 df.isnull().sum()
 ```
-
-
-
 
     earn      0
     height    0
@@ -5057,33 +4041,15 @@ df.isnull().sum()
     age       0
     dtype: int64
 
-
-
 ### 10.5. sort_values - 컬럼 값을 기준으로 데이터를 정렬
-
 
 ```python
 # age를 기준으로 오름차순 정렬
 df.sort_values("age", ascending=True).head()
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -5146,31 +4112,13 @@ df.sort_values("age", ascending=True).head()
 </table>
 </div>
 
-
-
-
 ```python
 # age로 정렬하고 같다면 earn으로 정렬
 df.sort_values(["age", "earn"], ascending=True).head()
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -5233,17 +4181,11 @@ df.sort_values(["age", "earn"], ascending=True).head()
 </table>
 </div>
 
-
-
 ### 10.6. value_counts - 컬럼의 값별 개수 반환
-
 
 ```python
 df.age.value_counts()
 ```
-
-
-
 
     36    45
     32    43
@@ -5258,46 +4200,22 @@ df.age.value_counts()
     93     1
     Name: age, Length: 73, dtype: int64
 
-
-
 ### 10.7. corr, cov, corrwith - 상관계수와 공분산
-
 
 ```python
 # age와 earn의 상관계수
 df.age.corr(df.earn)
 ```
 
-
-
-
     0.07400349177836056
-
-
-
 
 ```python
 # 전체 데이터 프레임으로 적용하면 모든 컬럼 간의 상관계수 DataFrame 반환
 df.corr()
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -5341,29 +4259,17 @@ df.corr()
 </table>
 </div>
 
-
-
-
 ```python
 # age와 earn의 공분산
 df.age.cov(df.earn)
 ```
 
-
-
-
     36523.69921040891
-
-
-
 
 ```python
 # 한 컬럼의 다른 컬럼과의 상관계수 Series 반환
 df.corrwith(df.earn)
 ```
-
-
-
 
     earn      1.000000
     height    0.291600
@@ -5371,12 +4277,10 @@ df.corrwith(df.earn)
     age       0.074003
     dtype: float64
 
-
-
 ## 11. Groupby
+
 ![Groupby 함수](./img/groupby_func.png)
 ![Groupby 과정](./img/groupby.png)
-
 
 ```python
 ipl_data = {
@@ -5389,23 +4293,8 @@ df = pd.DataFrame(ipl_data)
 df.head()
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -5456,34 +4345,23 @@ df.head()
 </table>
 </div>
 
-
-
 **`❗주의`** groupby를 하고 aggregation 함수를 붙여줘야 원하는 값이 나온다. groupby는 컬럼의 값별로 데이터프레임을 split해주는 것까지만 한다.
-
 
 ```python
 df.groupby(['Team'])['Points']
 ```
 
-
-
-
     <pandas.core.groupby.generic.SeriesGroupBy object at 0x000001C512660190>
 
-
-
 ### 11.1. Hierarchical Index
-왼쪽 일수록 **대분류**, 오른쪽 일수록 **소분류** 기준이 된다.
 
+왼쪽 일수록 **대분류**, 오른쪽 일수록 **소분류** 기준이 된다.
 
 ```python
 # 2개를 기준으로 묶는 경우
 df_ty = df.groupby(['Team', 'Year'])['Points'].sum()
 df_ty
 ```
-
-
-
 
     Team    Year
     Devils  2014    863
@@ -5500,17 +4378,11 @@ df_ty
     kings   2015    812
     Name: Points, dtype: int64
 
-
-
-
 ```python
 # 3개를 기준으로 묶는 경우
 df_tyr = df.groupby(['Team', 'Year', 'Rank'])['Points'].sum()
 df_tyr
 ```
-
-
-
 
     Team    Year  Rank
     Devils  2014  2       863
@@ -5527,16 +4399,10 @@ df_tyr
     kings   2015  4       812
     Name: Points, dtype: int64
 
-
-
-
 ```python
 # 슬라이싱도 가능하다
 df_ty["Devils":"Rider"]
 ```
-
-
-
 
     Team    Year
     Devils  2014    863
@@ -5546,17 +4412,11 @@ df_ty["Devils":"Rider"]
             2017    788
     Name: Points, dtype: int64
 
-
-
 `groupby`의 결과도 데이터프레임이므로 인덱스가 존재하는데, 2개의 컬럼으로 `groupby`를 할 경우 Index가 2개 생성된다.
-
 
 ```python
 df_ty.index
 ```
-
-
-
 
     MultiIndex([('Devils', 2014),
                 ('Devils', 2015),
@@ -5572,34 +4432,17 @@ df_ty.index
                 ( 'kings', 2015)],
                names=['Team', 'Year'])
 
-
-
 ### 11.2. unstack - 그룹으로 묶인 데이터를 행렬 형태로 전환
-인덱스에서 가장 나중에 있는, 마지막에 있는 컬럼이 컬럼이 된다.
 
+인덱스에서 가장 나중에 있는, 마지막에 있는 컬럼이 컬럼이 된다.
 
 ```python
 # 2개로 묶었을 경우의 unstack - Year가 컬럼으로
 df_ty.unstack()
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -5657,31 +4500,13 @@ df_ty.unstack()
 </table>
 </div>
 
-
-
-
 ```python
 # 3개로 묶었을 경우의 unstack - Rank가 컬럼으로
 df_tyr.unstack()
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -5795,10 +4620,7 @@ df_tyr.unstack()
 </table>
 </div>
 
-
-
 ### 11.3. swaplevel - 인덱스 레벨 변경
-
 
 ```python
 # Team, Year의 Level을 바꿈 -> Year가 대분류가 된다
@@ -5806,10 +4628,7 @@ df_tyr.unstack()
 df_ty.swaplevel()
 ```
 
-
-
-
-    Year  Team  
+    Year  Team
     2014  Devils    863
     2015  Devils    673
     2014  Kings     741
@@ -5824,18 +4643,12 @@ df_ty.swaplevel()
           kings     812
     Name: Points, dtype: int64
 
-
-
-
 ```python
 # level을 바꾸고 난 뒤에 sort_index을 해서 다시 재정렬해주자
 df_ty.swaplevel().sort_index(level=0)
 ```
 
-
-
-
-    Year  Team  
+    Year  Team
     2014  Devils    863
           Kings     741
           Riders    876
@@ -5850,19 +4663,14 @@ df_ty.swaplevel().sort_index(level=0)
           Riders    690
     Name: Points, dtype: int64
 
-
-
 ### 11.4. 기본 연산
-Index Level을 기준으로 기본 연산 적용할 수 있다.
 
+Index Level을 기준으로 기본 연산 적용할 수 있다.
 
 ```python
 # Level=0인 Team을 기준으로 sum연산 적용
 df_ty.sum(level=0)
 ```
-
-
-
 
     Team
     Devils    1536
@@ -5872,16 +4680,10 @@ df_ty.sum(level=0)
     kings      812
     Name: Points, dtype: int64
 
-
-
-
 ```python
 # Level=1인 Year을 기준으로 sum연산 적용
 df_ty.sum(level=1)
 ```
-
-
-
 
     Year
     2014    3181
@@ -5890,15 +4692,11 @@ df_ty.sum(level=1)
     2017    1478
     Name: Points, dtype: int64
 
-
-
 ### 11.5. Grouped - Split된 상태
-
 
 ```python
 grouped = df.groupby("Team")
 ```
-
 
 ```python
 # for문으로 언패킹할 때 그룹이름과 튜플 형태의 테이블을 반환
@@ -5929,31 +4727,14 @@ for group_name, table in grouped:
     kings
         Team  Rank  Year  Points
     5  kings     4  2015     812
-    
-
 
 ```python
 # 특정 그룹의 테이블 추출
 grouped.get_group("Devils")
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -5983,34 +4764,17 @@ grouped.get_group("Devils")
 </table>
 </div>
 
-
-
 #### 11.5.1. aggregation - 그룹별 기본 연산
-`sum`, `mean`등 여러 통계정보를 추출한다.
 
+`sum`, `mean`등 여러 통계정보를 추출한다.
 
 ```python
 # 각 그룹별 합계
 grouped.agg(max)
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -6061,31 +4825,13 @@ grouped.agg(max)
 </table>
 </div>
 
-
-
-
 ```python
 # 각 그룹별 평균
 grouped.agg(np.mean)
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -6136,31 +4882,13 @@ grouped.agg(np.mean)
 </table>
 </div>
 
-
-
-
 ```python
 # 한 번에 여러 개 적용 가능하지만 특정 컬럼을 지정해야함
 grouped['Points'].agg([sum, np.mean, np.std])
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -6211,33 +4939,15 @@ grouped['Points'].agg([sum, np.mean, np.std])
 </table>
 </div>
 
-
-
 #### 11.5.2. transform - 개별 데이터 변환.
-
 
 ```python
 # 기준인 Team 빼고 DataFrame 원래 형태로 변환
 grouped.transform(lambda x: (x))
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -6324,31 +5034,13 @@ grouped.transform(lambda x: (x))
 </table>
 </div>
 
-
-
-
 ```python
 # 그룹의 최대값으로 변환 -> 같은 그룹이면 값이 같음
 grouped.transform(lambda x: x.max())
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -6435,31 +5127,13 @@ grouped.transform(lambda x: x.max())
 </table>
 </div>
 
-
-
-
 ```python
 # 개별 데이터 정규화
 grouped.transform(lambda x: (x - x.mean()) / x.std())
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -6546,33 +5220,15 @@ grouped.transform(lambda x: (x - x.mean()) / x.std())
 </table>
 </div>
 
-
-
 #### 11.5.3. filter - 특정 조건의 데이터 추출
-
 
 ```python
 # 그룹명의 길이가 3이상인 데이터만 추출
 grouped.filter(lambda x: len(x) >= 3)
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -6637,31 +5293,13 @@ grouped.filter(lambda x: len(x) >= 3)
 </table>
 </div>
 
-
-
-
 ```python
 # 그룹의 포인트 합이 1000 이상인 데이터만 추출
 grouped.filter(lambda x: x['Points'].sum() > 1000)
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -6754,13 +5392,12 @@ grouped.filter(lambda x: x['Points'].sum() > 1000)
 </table>
 </div>
 
-
-
 ## 12. Pivot Table
+
 특정 컬럼이 `다른 컬럼들`에 의해 어떻게 분류되는지 보고 싶을 때 사용하면 좋다. 약간 조건부확률표를 보는 느낌이다.
+
 - 인덱스는 `groupby`와 동일하다.
 - 컬럼에 추가로 라벨링 값을 추가하여 value에 숫자형 값을 aggregation하는 형태이다.
-
 
 ```python
 import dateutil
@@ -6769,23 +5406,8 @@ df["date"] = df["date"].apply(dateutil.parser.parse, dayfirst=True)
 df.head()
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -6854,9 +5476,6 @@ df.head()
 </table>
 </div>
 
-
-
-
 ```python
 df.pivot_table(
     values=["duration"],                    # 테이블 인덱스와 컬럼으로 분류할 컬럼 지정
@@ -6866,9 +5485,6 @@ df.pivot_table(
     fill_value=0,                           # NaN 대체값
 )
 ```
-
-
-
 
 <div>
 <style scoped>
@@ -6887,6 +5503,7 @@ df.pivot_table(
     .dataframe thead tr:last-of-type th {
         text-align: right;
     }
+
 </style>
 <table border="1" class="dataframe">
   <thead>
@@ -7112,31 +5729,13 @@ df.pivot_table(
 </table>
 </div>
 
-
-
-
 ```python
 # groupby로도 비슷하게 구현할 수 있음
 df.groupby(["month", "item", "network"])["duration"].sum().unstack().fillna(0)
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -7356,35 +5955,18 @@ df.groupby(["month", "item", "network"])["duration"].sum().unstack().fillna(0)
 </table>
 </div>
 
-
-
 ## 13. Crosstab
+
 - **pivot 테이블의 특수한 형태**이다. `index`와 `columns`에 각각 하나의 컬럼만 들어간다.
 - 두 컬럼에 교차 빈도, 비율, 덧셈 등을 구할 때 사용한다.
-
 
 ```python
 df = pd.read_csv("./data/movie_rating.csv")
 df.head()
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -7429,9 +6011,6 @@ df.head()
 </table>
 </div>
 
-
-
-
 ```python
 pd.crosstab(
     index=df.critic,    # 테이블 인덱스 지정
@@ -7441,23 +6020,8 @@ pd.crosstab(
 ).fillna(0)
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -7538,11 +6102,9 @@ pd.crosstab(
 </table>
 </div>
 
-
-
 ## 14. merge
-데이터프레임의 크기가 같지 않아도 데이터를 병합한다.
 
+데이터프레임의 크기가 같지 않아도 데이터를 병합한다.
 
 ```python
 raw_data = {
@@ -7553,23 +6115,8 @@ df_a = pd.DataFrame(raw_data, columns=["subject_id", "test_score"])
 df_a
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -7633,9 +6180,6 @@ df_a
 </table>
 </div>
 
-
-
-
 ```python
 raw_data = {
     "subject_id": ["4", "5", "6", "7", "8"],
@@ -7646,23 +6190,8 @@ df_b = pd.DataFrame(raw_data, columns=["subject_id", "first_name", "last_name"])
 df_b
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -7707,33 +6236,15 @@ df_b
 </table>
 </div>
 
-
-
 ### 14.1. on, left_on, right_on - 기준 컬럼 지정
-
 
 ```python
 # 공통 컬럼 중 공통된 데이터만 병합
 pd.merge(df_a, df_b, on='subject_id')
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -7776,32 +6287,14 @@ pd.merge(df_a, df_b, on='subject_id')
   </tbody>
 </table>
 </div>
-
-
-
 
 ```python
 # 같은 컬럼인데 이름만 다를 경우 직접 지정 가능
 pd.merge(df_a, df_b, left_on='subject_id', right_on='subject_id')
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -7845,34 +6338,17 @@ pd.merge(df_a, df_b, left_on='subject_id', right_on='subject_id')
 </table>
 </div>
 
-
-
 ### 14.2. join
-![join 메서드](./img/join_method.png)
 
+![join 메서드](./img/join_method.png)
 
 ```python
 # left : 왼쪽에 있는 데이터를 기준으로 병합
 pd.merge(df_a, df_b, on='subject_id', how='left')
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -7958,31 +6434,13 @@ pd.merge(df_a, df_b, on='subject_id', how='left')
 </table>
 </div>
 
-
-
-
 ```python
 # right : 왼쪽에 있는 데이터를 기준으로 병합
 pd.merge(df_a, df_b, on='subject_id', how='right')
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -8033,31 +6491,13 @@ pd.merge(df_a, df_b, on='subject_id', how='right')
 </table>
 </div>
 
-
-
-
 ```python
 # outer : 양쪽 데이터 모두를 살려 병합
 pd.merge(df_a, df_b, on='subject_id', how='outer')
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -8150,31 +6590,13 @@ pd.merge(df_a, df_b, on='subject_id', how='outer')
 </table>
 </div>
 
-
-
-
 ```python
 # inner : 서로 공통된 데이터만 가지고 병합 (default)
 pd.merge(df_a, df_b, on='subject_id', how='inner')
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -8218,33 +6640,15 @@ pd.merge(df_a, df_b, on='subject_id', how='inner')
 </table>
 </div>
 
-
-
 ### 14.3. right_index, left_index
-
 
 ```python
 # 기준 컬럼을 양 쪽 데이터프레임 모두 살리고 싶을 때
 pd.merge(df_a, df_b, right_index=True, left_index=True)
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -8301,11 +6705,9 @@ pd.merge(df_a, df_b, right_index=True, left_index=True)
 </table>
 </div>
 
-
-
 ## 15. concat
-컬럼이 모두 같은 데이터를 병합한다.
 
+컬럼이 모두 같은 데이터를 병합한다.
 
 ```python
 raw_data = {
@@ -8317,23 +6719,8 @@ df_a = pd.DataFrame(raw_data, columns=["subject_id", "first_name", "last_name"])
 df_a
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -8377,9 +6764,6 @@ df_a
   </tbody>
 </table>
 </div>
-
-
-
 
 ```python
 raw_data = {
@@ -8391,23 +6775,8 @@ df_b = pd.DataFrame(raw_data, columns=["subject_id", "first_name", "last_name"])
 df_b
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -8451,9 +6820,6 @@ df_b
   </tbody>
 </table>
 </div>
-
-
-
 
 ```python
 # df_a 아래 df_b 데이터가 붙는다
@@ -8461,23 +6827,8 @@ df_concated = pd.concat([df_a, df_b])
 df_concated.reset_index()
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -8562,32 +6913,14 @@ df_concated.reset_index()
   </tbody>
 </table>
 </div>
-
-
-
 
 ```python
 # append를 쓰면 concat(axis=0)과 같은 동작을 수행
 df_a.append(df_b).reset_index()
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -8672,9 +7005,6 @@ df_a.append(df_b).reset_index()
   </tbody>
 </table>
 </div>
-
-
-
 
 ```python
 # axis를 지정하여 concat할 수 있음
@@ -8683,23 +7013,8 @@ df_concated_axis_1 = pd.concat([df_a, df_b], axis=1)
 df_concated_axis_1.reset_index()
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -8768,10 +7083,7 @@ df_concated_axis_1.reset_index()
 </table>
 </div>
 
-
-
 ## 16. Dataframe to pickle
-
 
 ```python
 # pickle로 저장
@@ -8779,23 +7091,8 @@ df.to_pickle('./data/save_test.pickle')
 df.head()
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -8839,9 +7136,6 @@ df.head()
   </tbody>
 </table>
 </div>
-
-
-
 
 ```python
 # pickle파일 로드
@@ -8849,23 +7143,8 @@ df_pickle = pd.read_pickle('./data/save_test.pickle')
 df_pickle.head()
 ```
 
-
-
-
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -8909,5 +7188,3 @@ df_pickle.head()
   </tbody>
 </table>
 </div>
-
-

@@ -13,6 +13,7 @@
 - [Algorithm](./algorithm)
 - [Numpy](./numpy)
 - [Pandas](./pandas)
+- [Data Visualization](./data-visualization)
 
 ## 📌 References
 
